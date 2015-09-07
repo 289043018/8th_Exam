@@ -66,85 +66,89 @@
 					           %>
 					          <tr class="success">
 										 <td>
-										 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#updateModal"data-whatever="@mdo">编辑</button>
-										 
-										 
-										 
+										 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#updateModal">编辑</button>
 										 
 										 <!--          编辑模态框 -->
-         <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal"
-             aria-hidden="true">
-         <div class="modal-dialog">
-             <div class="modal-content">
-                 <div class="modal-header">
-                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                     </button>
-                     <h4 class="modal-title" id="exampleModalLable">Update Customer</h4>
-                 </div>
-                 <div class="modal-body">
-                <form class="form-horizontal" role="form" action="<%=request.getContextPath() %>/update.action" Method="post">
-                    
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">ID：</label>
-                        <div class="col-md-4">
-                            <input type="text" name="delet_id" value="<%=customers.getId()%>" class="form-control " disable placeholder="Frist Name">
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">Frist Name：</label>
-                        <div class="col-md-4">
-                            <input type="text" name="first_name"  class="form-control" placeholder="Frist Name">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">Last Name：</label>
-                        <div class="col-md-4">
-                            <input type="text" name="last_name" class="form-control" placeholder="Last Name">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">Email：</label>
-                        <div class="col-md-4">
-                            <input type="text" name="email" class="form-control" placeholder="Email">
-                        </div>
-                    </div>
+											<div class="modal fade" id="updateModal" tabindex="-1"
+												role="dialog" aria-labelledby="exampleModal"
+												aria-hidden="true">
+												<div class="modal-dialog">
+													<div class="modal-content">
+														<div class="modal-header">
+															<button type="button" class="close" data-dismiss="modal"
+																aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+															<h4 class="modal-title" id="exampleModalLable">Update
+																Customer</h4>
+														</div>
+														<div class="modal-body">
+															<form class="form-horizontal" role="form"
+																action="<%=request.getContextPath()%>/doCustomer_update!update.action"
+																Method="post">
 
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">Address：</label>
-                        <div class="dropdown">
-								<select class="btn btn-default" id="dlabel" name="address_id" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-								</select>
-							</div>
-                    </div>
+																<div class="form-group">
+																	<label class="col-md-4 control-label">ID：</label>
+																	<div class="col-md-4">
+																		<input type="text" name="delet_id"
+																			value="<%=customers.getId()%>" class="form-control "
+																			disabled>
+																	</div>
+																</div>
 
-                    <div class="form-group">
-                        <div class="col-sm-offset-4 col-md-4">
-                            <button type="submit" class="btn btn-default">更新</button>
-                            <button type="submit" class="btn btn-default">取消</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-             </div>
-         </div>
-										 
-										 
-										 
-										 
-										 
-										 
-										 
-										 
-										 /<a class="btn btn-primary btn-sm"
+																<div class="form-group">
+																	<label class="col-md-4 control-label">Frist
+																		Name：</label>
+																	<div class="col-md-4">
+																		<input type="text" name="first_name"
+																			class="form-control" placeholder="Frist Name">
+																	</div>
+																</div>
+																<div class="form-group">
+																	<label class="col-md-4 control-label">Last
+																		Name：</label>
+																	<div class="col-md-4">
+																		<input type="text" name="last_name"
+																			class="form-control" placeholder="Last Name">
+																	</div>
+																</div>
+																<div class="form-group">
+																	<label class="col-md-4 control-label">Email：</label>
+																	<div class="col-md-4">
+																		<input type="text" name="email" class="form-control"
+																			placeholder="Email">
+																	</div>
+																</div>
+
+																<div class="form-group">
+																	<label class="col-md-4 control-label">Address：</label>
+																	<div class="dropdown">
+																		<select class="btn btn-default" id="dlabel"
+																			name="address_id" type="button"
+																			data-toggle="dropdown" aria-haspopup="true"
+																			aria-expanded="false">
+																			<option value="1">1</option>
+																			<option value="2">2</option>
+																			<option value="3">3</option>
+																			<option value="4">4</option>
+																		</select>
+																	</div>
+																</div>
+
+																<div class="form-group">
+																	<div class="col-sm-offset-4 col-md-4">
+																		<button type="submit" class="btn btn-default">更新</button>
+																		<button type="submit" class="btn btn-default">取消</button>
+																	</div>
+																</div>
+															</form>
+														</div>
+													</div>
+												</div>
+											</div>
+											 <a class="btn btn-primary btn-sm"
 											name="delet_id"
-											href="<%= request.getContextPath() %>/deletAction.action?delet_id=<%=customers.getId()%>"
+											href="<%= request.getContextPath() %>/doCustomer_delet!delet.action?delet_id=<%=customers.getId()%>"
 											>删除</a> 
 											
 											</td>
@@ -162,8 +166,6 @@
 										<td><input disabled type="text" name="last_update"
 											value="<%=customers.getLastupdate()%>" /></td> 
 									</tr> 
-					         
-					          
 					           <%
 					         }
 							 %>  
@@ -200,7 +202,7 @@
                      <h4 class="modal-title" id="exampleModalLable">New Customer</h4>
                  </div>
                  <div class="modal-body">
-                <form class="form-horizontal" role="form" action="<%=request.getContextPath() %>/create.action" Method="post" name="loginForm">
+                <form class="form-horizontal" role="form" action="<%=request.getContextPath() %>/doCustomer_add!add.action" Method="post" name="loginForm">
                     <div class="form-group">
                         <label class="col-md-4 control-label">Frist Name：</label>
                         <div class="col-md-4">

@@ -22,7 +22,7 @@
    <constant name="struts.ui.templateDir" value="template"/>
    <constant name="struts.ui.templateSuffix" value="ftl"/>
 
-
+<constant name="struts.enable.DynamicMethodInvocation" value="true" />
 
 	<!-- package标签包标签，用于区分不同的请求文件的标签，比方说 网站前台请求和网站后台请求 -->
 	<!-- name属性：包名，用于被别的包调用或者继承 -->
@@ -33,17 +33,18 @@
 			<result name="fail">/jsp/fail.jsp</result>
 		</action>
 		<action name="logout" class="com.hand.action.LogoutAction">
-		<result name="success">/jsp/success.jsp</result>
+		<result name="success">/jsp/login.jsp</result>
 		</action>
-		<action name="create" class="com.hand.action.doCustomerAction" method="add">
-		<result name="success">/jsp/success.jsp</result>
+		<action name="*_*" class="com.hand.action.{1}Action" method="{2}">
+		<interceptor-ref name="defaultStack"/>
+		<result name="success">/jsp/index.jsp</result>
 		</action>
-		<action name="deletAction" class="com.hand.action.doCustomerAction" method="delet">
-		<result name="success">/jsp/success.jsp</result>
+<!-- 		<action name="delet" class="com.hand.action.doCustomerAction" method="delet">
+		<result name="success">/jsp/index.jsp</result>
 		</action>
 		<action name="update" class="com.hand.action.doCustomerAction" method="update">
-		<result name="success">/jsp/success.jsp</result>
-		</action>
+		<result name="success">/jsp/index.jsp</result>
+		</action> -->
 	</package>
 	
 </struts>

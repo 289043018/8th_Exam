@@ -1,5 +1,6 @@
 package com.hand.Dao;
 
+import java.io.Serializable;
 import java.sql.ResultSet;
 import java.util.Iterator;  
 import java.util.List;
@@ -10,6 +11,8 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 import com.hand.POJO.Customer;
+import com.hand.POJO.Payment;
+import com.hand.POJO.Rental;
 import com.hand.util.HibernateUtil;
 import com.opensymphony.xwork2.Result;  
 public class CustomerDao {
@@ -42,6 +45,44 @@ public class CustomerDao {
 	    public void delete(int customer_id) {  
 	        try {  
 	            tx = session.beginTransaction();
+	            
+	            String sql2 = "select rental_id from Payment where customer_id='"+customer_id+"'";  
+		        List list2 = session.createQuery(sql2).list();
+		        if(!list2.isEmpty()) {  
+		            Iterator it2 = list2.iterator();  
+		            while(it2.hasNext()) {
+		            	int rental_id = (Integer) it2.next();
+		            	
+		            	   String sql3 = "select payment_id from Payment where customer_id='"+rental_id+"'";  
+		   		        List list3 = session.createQuery(sql3).list();
+		   		        if(!list3.isEmpty()) {  
+		   		            Iterator it3 = list3.iterator();  
+		   		            while(it3.hasNext()) {
+		   		            	int payment_id = (Integer) it3.next();
+		   		            	Payment payment = (Payment) session.get(Payment.class, payment_id);
+		   		            	session.delete(payment);
+		   		            }
+		   		        }
+		            	
+		            	
+		            	
+		            	Rental rental =  (Rental) session.get(Rental.class, rental_id);
+		            	session.delete(rental);
+		            }
+		        }
+	            
+	            String sql = "select payment_id from Payment where customer_id='"+customer_id+"'";  
+		        List list = session.createQuery(sql).list();
+		        if(!list.isEmpty()) {  
+		            Iterator it = list.iterator();  
+		            while(it.hasNext()) {
+		            	int payment_id = (Integer) it.next();
+		            	Payment payment = (Payment) session.get(Payment.class, payment_id);
+		            	session.delete(payment);
+		            }
+		        }
+		       
+	            
 	            Customer customer = 
 	                    (Customer)session.get(Customer.class, customer_id);
 	            session.delete(customer);
